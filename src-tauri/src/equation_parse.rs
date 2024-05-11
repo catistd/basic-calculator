@@ -34,6 +34,10 @@ pub fn parse_equation(e: String) -> Result<f64, String> {
         }
     }
 
+    if operations.is_empty() {
+        return Ok(temp_num.parse::<f64>().unwrap())
+    }
+
     //get last number
     if !temp_num.is_empty() {
         numbers.push(temp_num.parse::<f64>().unwrap());
