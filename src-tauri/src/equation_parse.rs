@@ -8,7 +8,7 @@ pub fn parse_equation(e: String) -> Result<f64, String> {
 
     //check for trailing operator
     if OPERATORS.contains(&e.chars().nth(e.len()-1).unwrap()) {
-        return Err("error invalid syntax".to_string())
+        return Err("error".to_string())
     }
 
     //split the equation into operators and numbers and put then in their respective vectors
@@ -18,14 +18,14 @@ pub fn parse_equation(e: String) -> Result<f64, String> {
         } else if OPERATORS.contains(&c) {
             //check for leading operator
             if temp_num.is_empty() {
-                return Err("error invalid syntax".to_string())
+                return Err("error".to_string())
             }
 
             operations.push(c);
 
             //check for division by 0
             if operations.len() > 1 && operations[operations.len() - 1] == '/' && temp_num.parse::<f64>().unwrap() == 0.0 {
-                return Err("error divide by 0".to_string())
+                return Err("error".to_string())
             }
 
             //parse temp_num into a float and add it to numbers then clear for next number
@@ -43,7 +43,7 @@ pub fn parse_equation(e: String) -> Result<f64, String> {
         numbers.push(temp_num.parse::<f64>().unwrap());
         //check for division by 0
         if operations[operations.len() - 1] == '/' && temp_num.parse::<f64>().unwrap() == 0.0 {
-            return Err("error divide by 0".to_string())
+            return Err("error".to_string())
         }
     }
 

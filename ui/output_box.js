@@ -13,7 +13,7 @@ function character_add(c) {
 
 function clear() {
     main_string = "";
-    document.getElementById("equation").textContent = main_string;
+    document.getElementById("equation").textContent = "";
 }
 
 function enter() {

@@ -14,5 +14,8 @@ fn main() {
 
 #[tauri::command]
 fn calculate(equation: String) -> String {
-    parse_equation(equation).unwrap().to_string()
+    match parse_equation(equation) {
+      Ok(num) => num.to_string(),
+      Err(e) => e
+    }
 }
